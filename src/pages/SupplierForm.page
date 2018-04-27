@@ -1,0 +1,277 @@
+<apex:page standardController="Supplier__c" tabStyle="Supplier__c" showHeader="false" sidebar="false" renderAs="pdf">
+  <style>
+    .pbSubheader{background-color:blue}
+  </style>
+  <apex:form >
+    <apex:image url="{!$Resource.SfdcNoSoftwareLogo}" width="120" height="80" style="float:right"/>
+    <apex:pageBlock title="Supplier Setup/Update Form">
+      <div style="color:blue">
+        ** All fields are required unless dictated by location **
+      </div>
+      
+      <apex:pageBlockSection title="Supplier Status">
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel >New or Existing Supplier:</apex:outputLabel>
+          <apex:outputText value="{!Supplier__c.RecordType.Name}"/>
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem >
+          <apex:outputText >
+            NOTE: If you are an existing supplier and your company name or Tax/VAT/GST Number has changed, 
+            please provide the former name or number for reference:
+          </apex:outputText>
+          <apex:outputText value="{!Supplier__c.FormerCompanyNameTaxNumber__c}"/>
+        </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+      
+      <apex:pageBlockSection title="Supplier Name and Tax Information">
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Supplier Name</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.Name}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Trading As/ Doing Business As (DBA) Name:</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.DbaName__c}"/>
+        </apex:pageBlockSectionItem> 
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Tax ID Number:</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.TaxId__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >ID Number Type (TIN, EIN, SSN, ABN,IRD):</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.TaxIdType__c}"/>
+         </apex:pageBlockSectionItem>
+         
+        <apex:pageBlockSectionItem > 
+        <apex:outputLabel >VAT/GST Registration Number (EMEA/APAC regions only)</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.VatGstRegNumber__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem > 
+        <apex:outputLabel >PAN (IN only)</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PanIN__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Dun &amp; Bradstreet DUNS Number:</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.DnbDunsNumber__c}"/>
+        </apex:pageBlockSectionItem>  
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Please provide a brief desciption of the goods or services to be provided to salesforce.com:</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.GoodsAndServicesDescription__c}"/>
+        </apex:pageBlockSectionItem> 
+         
+      </apex:pageBlockSection>
+      
+      <apex:pageBlockSection title="Contact Information">
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >PO Transmissions Contact Name</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PoTxContactName__c}"/>
+        </apex:pageBlockSectionItem>
+          
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >PO Tranmissions Email</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PoTxEmail__c}"/>
+        </apex:pageBlockSectionItem>  
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >PO Transmission Phone</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PoTxPhone__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Billing Contact Name</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BillingContactName__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Billing Email</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BillingEmail__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Billing Phone</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BillingPhone__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Remittance Contact Name</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentRemittanceContactName__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Remittance Email</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentRemittanceEmail__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Remittance Phone</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentRemittancePhone__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Fax</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.Fax__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Company Website</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.CompanyWebsite__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        </apex:pageBlockSection>
+          <apex:pageBlockSection title="Address">
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Supplier Street</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.SupplierStreet__c}"/>
+        </apex:pageBlockSectionItem>
+          
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Street</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentStreet__c}"/>
+        </apex:pageBlockSectionItem>  
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Supplier City</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.SupplierCity__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment City</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentCity__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Supplier State</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.SupplierState__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment State</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentState__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Supplier Region</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.SupplierRegion__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Region</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentRegion__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Supplier Postal Code</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.SupplierPostalCode__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Postal Code</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentPostalCode__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Supplier Country</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.SupplierCountry__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        
+          <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Country</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentCountry__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        </apex:pageBlockSection>
+        
+          <apex:pageBlockSection title="Banking and Payment Information">
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Payment Currency</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.PaymentCurrency__c}"/>
+        </apex:pageBlockSectionItem>
+          
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Bank Country</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BankCountry__c}"/>
+        </apex:pageBlockSectionItem>  
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >Beneficary Name</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BeneficiaryName__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Bank Name</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BankName__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Account Number</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.AccountNumber__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >IBAN Number</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.IbanNumber__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >SWIFT Code</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.SwiftCode__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel >ACH Routing Number</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.AchRoutingNumber__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Bank/Transit Number (CA Only)</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BankTransitNumberCA__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >BSB Number (AU Only)</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BsbNumber__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Bank/ Branch Code (SG Only)</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BankBranchCode__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        
+          <apex:pageBlockSectionItem >
+        <apex:outputLabel >Bank Number (JP Only)</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BankNumberJP__c}"/>
+        </apex:pageBlockSectionItem>
+        
+         <apex:pageBlockSectionItem >
+        <apex:outputLabel >Branch Number (JP Only)</apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.BranchNumberJP__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel > Account Type (JP Only) </apex:outputLabel>
+         <apex:outputText value="{!Supplier__c.AccountTypeJP__c}"/>
+        </apex:pageBlockSectionItem>
+        
+        </apex:pageBlockSection>
+        
+          
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

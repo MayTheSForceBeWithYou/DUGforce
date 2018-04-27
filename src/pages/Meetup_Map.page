@@ -1,0 +1,7 @@
+<apex:page standardStylesheets="false" docType="HTML-5.0" standardController="Meetup__c">
+  <apex:outputPanel rendered="{!Meetup__c.Venue__c==null}">
+    Please select a Venue.
+  </apex:outputPanel>
+  <c:map lat="{!Meetup__c.Venue__r.Coordinates__Latitude__s}" lng="{!Meetup__c.Venue__r.Coordinates__Longitude__s}" rendered="{!Meetup__c.Venue__c!=null}"/>
+  
+</apex:page>

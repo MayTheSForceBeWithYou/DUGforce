@@ -1,0 +1,5 @@
+<apex:page standardController="Supplier__c" extensions="SupplierSubmitController">
+  <script>
+    
+  </script>
+</apex:page>

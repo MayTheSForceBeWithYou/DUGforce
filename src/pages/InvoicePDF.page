@@ -1,0 +1,91 @@
+<apex:page standardController="Invoice__c" sidebar="false" showHeader="false" standardStylesheets="false">
+  <style>
+    .invoice-header {
+      text-transform: uppercase;
+      font-size: 80px;
+      color: lightgrey;
+      font-family: Arial Black, sans-serif;
+      font-weight: bolder;
+    }
+    .field-labels {
+      text-transform: uppercase;
+      color: lightgrey;
+      font-style: italic;
+    }
+  </style>
+
+  <!--apex:stylesheet value="{!URLFOR($Resource.SLDS_2_2_2, 'assets/styles/salesforce-lightning-design-system.min.css')}" /-->
+  <apex:slds />
+
+  <div class="slds-page-header">
+
+  </div>
+
+  <table>
+    <tr>
+      <td></td>
+      <td class="invoice-header">{!$ObjectType.Invoice__c.label}</td>
+    </tr>
+    <tr>
+      <td style="width: 50%">
+        <!-- Payee Info -->
+        <apex:pageBlock >
+          <apex:pageBlockSection >
+            <apex:outputText styleClass="">{!Invoice__c.Owner.Name}</apex:outputText>
+          </apex:pageBlockSection>
+          <apex:pageBlockSection columns="1">
+            <apex:outputPanel >
+              <apex:outputText value="{!$Organization.Street}" /><br />
+              <apex:outputText value="{0}, {1}  {2}">
+                <apex:param value="{!$Organization.City}" />
+                <apex:param value="{!$Organization.State}" />
+                <apex:param value="{!$Organization.PostalCode}" />
+              </apex:outputText><br />
+              <apex:outputLabel for="payeePhone" value="{!$ObjectType.User.fields.Phone.label}" />:&nbsp;<apex:outputField id="payeePhone" value="{!Invoice__c.Owner.Phone}" /><br />
+              <apex:outputLabel for="payeeEmail" value="{!$ObjectType.User.fields.Email.label}" />:&nbsp;<apex:outputField id="payeeEmail" value="{!Invoice__c.Owner.Email}" />
+            </apex:outputPanel>
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+      </td>
+      <td style="width: 50%">
+        <!-- Payer Info -->
+        <apex:pageBlock id="pbInvoicePdf">
+          <apex:pageBlockSection id="pbsInvoiceDate" columns="1">
+            <apex:pageBlockSectionItem >
+              <apex:outputLabel id="dateLabel" for="dateValue" value="DATE:" styleClass="field-labels" />
+              <apex:outputText id="dateValue" value="{!Invoice__c.Date__c}" styleClass="" />
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+          <apex:pageBlockSection id="pbsInvoicePayee">
+            <apex:pageBlockSectionItem >
+              <apex:outputLabel id="invoiceNumLabel" for="invoiceNumValue" value="INVOICE #" styleClass="field-labels" />
+              <apex:outputText id="invoiceNumValue" styleClass="">{!Invoice__c.InvoiceNumber__c}</apex:outputText>
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+          <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem >
+              <apex:outputLabel id="reasonLabel" for="reasonValue" value="FOR: " styleClass="field-labels" />
+              <apex:outputText id="reasonValue" value="Developer Group Reimbursement" />
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+          <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem >
+              <apex:outputLabel for="" value="BILL TO:" styleClass="field-labels" />
+              <apex:outputPanel >
+                <apex:outputField value="{!Invoice__c.BillTo__r.Name}" /><br />
+                <apex:outputField value="{!Invoice__c.BillTo__r.Account.Name}" /><br />
+                <apex:outputField value="{!Invoice__c.BillTo__r.MailingStreet}" /><br />
+                <apex:outputText value="{0}, {1}  {2}">
+                  <apex:param value="{!Invoice__c.BillTo__r.MailingCity}" />
+                  <apex:param value="{!Invoice__c.BillTo__r.MailingState}" />
+                  <apex:param value="{!Invoice__c.BillTo__r.MailingPostalCode}" />
+                </apex:outputText>
+              </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+      </td>
+    </tr>
+  </table>
+  <img src="https://d85ecz8votkqa.cloudfront.net/support/help_center/Print_Payment_Receipt.JPG" />
+</apex:page>

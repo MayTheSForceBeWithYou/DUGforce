@@ -1,0 +1,24 @@
+<apex:page standardController="Meetup__c" extensions="InvoiceFromMeetup">
+  <apex:form >
+    <apex:sectionHeader title="Invoice from this Meetup"/>
+    <apex:pageBlock tabStyle="Invoice__c">
+      <apex:pageBlockSection >
+        <apex:outputText >Generate an Invoice for this Meetup?</apex:outputText>
+      </apex:pageBlockSection>
+      <apex:pageBlockButtons location="bottom">
+        <apex:commandButton action="{!generateInvoice}" value="Generate" />
+        <apex:commandButton action="{!cancel}" value="Cancel" />
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+    
+    <apex:pageBlock tabStyle="Expense__c" title="Expenses">
+      <apex:pageBlockTable value="{!meetupExpenses}" var="meetupExpense">
+        <apex:column value="{!meetupExpense.Name}" />
+        <apex:column value="{!meetupExpense.Date__c}" />
+        <apex:column value="{!meetupExpense.Amount__c}" />
+        <apex:column value="{!meetupExpense.Description__c}" />
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+
+  </apex:form>
+</apex:page>

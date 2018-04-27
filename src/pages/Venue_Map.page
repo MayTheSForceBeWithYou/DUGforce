@@ -1,0 +1,3 @@
+<apex:page standardStylesheets="false" docType="HTML-5.0" standardController="Venue__c">
+  <c:map lat="{!Venue__c.Coordinates__Latitude__s}" lng="{!Venue__c.Coordinates__Longitude__s}" />
+</apex:page>
